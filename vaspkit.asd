@@ -10,7 +10,9 @@
 			:serial t
 			:components ((:file "utility")
 				     (:file "vasprun")
-				     (:file "generator")))
+				     (:file "generator")
+				     (:file "incar")
+				     (:file "cell")))
 ;;	       (:file "utility" :depends-on ("package"))
 ;;	       (:file "vasprun" :depends-on ("utility"))
 ;;	       (:file "vaspinfo" :depends-on ("vasprun"))

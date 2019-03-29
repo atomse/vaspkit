@@ -48,6 +48,11 @@
 		      (second (parse-vector-leaf leaf)))
 		    varray))))
 
+(defun attrs-type (node)
+  (second (find "type" (node-attrs node) :test #'equal :key #'car)))
+
+(defun attrs-name (node)
+  (second (find "name" (node-attrs node) :test #'equal :key #'car)))
 
 ;; (defun parse-varray (node)
 ;;   (let* ((attrs (node-attrs node))
