@@ -15,17 +15,30 @@
 		 (setf (gethash key table) value)))
 	      ("v"
 	       (destructuring-bind (key value) (parse-vector-leaf node)
-		 (setf (gethash key table) value))))))
+		 (setf (gethash key table) value)))
+	      ("separator"
+	       (destructuring-bind (name table) (parse-separator node)
+		 (setf (gethash name table) table))))))
     (list name table)))
 
 (defmethod parameters ((vasprun node))
   (let* ((parameters (%parameters vasprun))
-	 (separators (node-children parameters))
+	 (nodes (node-children parameters))
 	 (table (make-hash-table :test #'equal)))
-    (loop for separator in separators
-       for (key value) = (parse-separator separator)
-       do (setf (gethash key table) value))
+    (loop for node in nodes
+       for typename = (node-name node)
+       do (eswitch (typename :test #'equal)
+	    ("i"
+	     (destructuring-bind (key value) (parse-item-leaf node)
+	       (setf (gethash key table) value)))
+	    ("v" 
+	     (destructuring-bind (key value) (parse-vector-leaf node)
+	       (setf (gethash key table) value)))
+	    ("separator"
+	     (destructuring-bind (key value) (parse-separator node)
+	       (setf (gethash key table) value)))))
     table))
-	 
+	     
+    
 	      
 	      
