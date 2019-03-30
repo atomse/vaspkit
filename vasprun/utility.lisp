@@ -54,15 +54,3 @@
 (defun attrs-name (node)
   (second (find "name" (node-attrs node) :test #'equal :key #'car)))
 
-;; (defun parse-varray (node)
-;;   (let* ((attrs (node-attrs node))
-;; 	 (name (string->keyword (second (find "name" attrs :key #'car :test #'equalp))))
-;; 	 (data (node-children node)))
-;;     (list name (mapcar #'parse-leaf data))))
-	 
-;; (defun ref (plist indicator &key (key #'identity) (test #'equalp))
-;;   (loop for a in plist by #'cddr
-;;      for b in (cdr plist) by #'cddr
-;;      if (funcall test (funcall key a) indicator)
-;;      return b))
-       

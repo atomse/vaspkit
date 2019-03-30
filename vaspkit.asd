@@ -3,7 +3,10 @@
   :version "0.1"
   :author "Chen Ruofan <physcrf@qq.com>"
   :licence "GPL"
-  :depends-on (:xmls :utility :string :cl-ppcre)
+  :depends-on (:xmls ;; https://www.common-lisp.net/project/xmls/
+	       :utility ;; https://github.com/physcrf/utility
+	       :string ;; https://github.com/physcrf/string#
+	       :cl-ppcre) ;; https://edicl.github.io/cl-ppcre/
   :components ((:file "package")
 	       (:module "vasprun"
 			:depends-on ("package")
